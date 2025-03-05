@@ -1,5 +1,7 @@
 package codeWarChallenges.highestAndLowest;
 
+import static java.util.Arrays.stream;
+
 /**
  * In this little assignment you are given a string of space separated numbers,
  * and have to return the highest and lowest number.
@@ -34,6 +36,11 @@ public class Main {
         low = findMin(arr);
         String result =  high.toString() + " " + low.toString();
         return result;
+    }
+//found this alternative method on codeWar solutions...
+    static String highAndLow2(String numbers) {
+        var stats = stream(numbers.split(" ")).mapToInt(Integer::parseInt).summaryStatistics();
+        return stats.getMax() + " " + stats.getMin();
     }
 
     public static int findMax(int[] array) {
